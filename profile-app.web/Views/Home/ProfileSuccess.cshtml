@@ -1,0 +1,9 @@
+﻿@model string
+@{
+    ViewData["Title"] = "ProfileError";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Успешно!</h1>
+<span style="color: green"> Профиль @Model создан!</span>
+@Html.ActionLink("Вернуться","ProfileForm","Home")

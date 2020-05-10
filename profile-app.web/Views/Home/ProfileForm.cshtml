@@ -1,0 +1,32 @@
+﻿@model profile.data.ProfileDTO
+@{
+    ViewBag.Title = "Добавление пользователя";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var cities = (IEnumerable<SelectListItem>)ViewBag.Cities;
+}
+
+    <form asp-action="profileForm" asp-controller="home" data-ajax="true" data-ajax-method="post" data-ajax-complete="completed">
+        <div class="form-group">
+            <label asp-for="FullName" class="control-label">ФИО</label>
+            <input type="text" asp-for="FullName" class="form-control" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label">Электронная почта</label>
+            <input type="email" asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="control-label">Телефон</label>
+            <input type="text" prefix="+7" pattern="/^(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/" asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CityId" class="control-label">Город</label>
+            <select asp-for="CityId" asp-items="cities"></select>
+            <span asp-validation-for="CityId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Отправить" class="btn btn-default" />
+        </div>
+    </form>
